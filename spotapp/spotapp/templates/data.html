@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Your Playlist</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section class="intro">
+						<header>
+							<h1>Playlists For You</h1>
+							<p>Here are some of our most recommended songs based on your selection:</p>
+							<p><tr>{%for key, value in prediction.items()%} <div><td><iframe src="https://open.spotify.com/embed/track/{{value}}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td></div> {% endfor %}</tr></p>
+						</header>
+						<div class="content">
+							<span class="image fill" data-position="center"><img src="{{url_for('static', filename='styles/images/pic01.jpg')}}" alt="" /></span>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="{{url_for('static', filename='scripts/autoform.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/jquery.min.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/jquery.scrolly.min.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/browser.min.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/breakpoints.min.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/util.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/main.js')}}"></script>
+
+	</body>
+</html>

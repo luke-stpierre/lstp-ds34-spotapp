@@ -1,0 +1,4 @@
+model/
+spotapp/spotapp/__pycache__
+backapp/backapp/music_autoencoder/
+model_backups/

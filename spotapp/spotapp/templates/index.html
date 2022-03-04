@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Spotify Recommender</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}" />
+	</head>
+	<style>
+		* {
+		  box-sizing: border-box;
+		}
+		
+		body {
+		  font: 16px Arial;  
+		}
+		
+		/*the container must be positioned relative:*/
+		.autocomplete {
+		  position: relative;
+		  display: inline-block;
+		}
+		
+		input {
+		  border: 1px solid transparent;
+		  background-color: #f1f1f1;
+		  padding: 10px;
+		  font-size: 16px;
+		}
+		
+		input[type=text] {
+		  background-color: #f1f1f1;
+		  width: 100%;
+		}
+		
+		input[type=submit] {
+		  background-color: DodgerBlue;
+		  color: #fff;
+		  cursor: pointer;
+		}
+		
+		.autocomplete-items {
+		  position: absolute;
+		  border: 1px solid #d4d4d4;
+		  border-bottom: none;
+		  border-top: none;
+		  z-index: 99;
+		  /*position the autocomplete items to be the same width as the container:*/
+		  top: 100%;
+		  left: 0;
+		  right: 0;
+		}
+		
+		.autocomplete-items div {
+		  padding: 10px;
+		  cursor: pointer;
+		  background-color: #fff; 
+		  border-bottom: 1px solid #d4d4d4; 
+		}
+		
+		/*when hovering an item:*/
+		.autocomplete-items div:hover {
+		  background-color: #e9e9e9; 
+		}
+		
+		/*when navigating through the items using the arrow keys:*/
+		.autocomplete-active {
+		  background-color: DodgerBlue !important; 
+		  color: #ffffff; 
+		}
+	</style>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section class="intro">
+						<header>
+							<h1>Spotify Song Suggester</h1>
+							<p>Help users find songs that fit their personal taste.</p>
+							<ul class="actions">
+								<li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li>
+							</ul>
+						</header>
+						<div class="content">
+							<span class="image fill" data-position="center"><img src="{{url_for('static', filename='styles/images/pic01.jpg')}}" alt="" /></span>
+						</div>
+					</section>
+
+				<!-- Section -->
+					<section id="first">
+						<header>
+							<h2>Learn about our model</h2>
+						</header>
+						<div class="content">
+							<p><strong>Discover</strong> new songs in a new way. We randomly sampled 10,000 spotify playlists made before the year 2017. Our approach was to use a common unsupervised learning technique - the autoencoder. Each playlist was converted to a vector and used to train the model on relationships between songs present. We then treat the unfinished playlists as a noisy vector and predict weighted representations of the likelihood of each particular song occurring.</p>
+							<span class="image main"><img src="{{url_for('static', filename='styles/images/pic02.jpg')}}" alt="" /></span>
+						</div>
+					</section>
+
+				<!-- Section -->
+					<section>
+						<header>
+							<h2>Explore new music</h2>
+						</header>
+						<div class="content">
+							<p><strong>Create a playlist</strong> by selecting 3 songs to start with. Due to computational limits we are only capable of evaluating a library of 10,000 total songs. Please only use songs available to the autofill feature.</p>
+							<form autocomplete="off" method="post" action="/data">
+								<div class="autocomplete" style="width:300px;">
+									<input id="myInput" type="text" name="song-1" placeholder="Song 1">
+									<input id="myInput2" type="text" name="song-2" placeholder="Song 2">
+									<input id="myInput3" type="text" name="song-3" placeholder="Song 3">
+								</div>
+								<input type="submit">
+							</form>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="{{url_for('static', filename='scripts/autoform.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/jquery.min.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/jquery.scrolly.min.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/browser.min.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/breakpoints.min.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/util.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/main.js')}}"></script>
+
+	</body>
+</html>
